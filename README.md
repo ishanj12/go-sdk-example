@@ -30,7 +30,7 @@ NGROK_AUTHTOKEN=<token> go run main.go
        if err != nil {
            return err
        }
-       <-fwd.Done()
+       log.Println("Ingress established at:", fwd.URL())
        return nil
    }
    ```
