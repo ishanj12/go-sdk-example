@@ -19,7 +19,7 @@ func run(ctx context.Context) error {
 	// Start a simple HTTP server
 	go http.ListenAndServe(":8080", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("%s %s", r.Method, r.URL.Path)
-		fmt.Fprintln(w, "Hello from go-sdk-example!")
+		fmt.Fprintln(w, "Hello from ngrok-go!")
 	}))
 
 	// Forward ngrok traffic to the local server
