@@ -23,15 +23,15 @@ NGROK_AUTHTOKEN=<token> go run main.go
    ```go
    import "golang.ngrok.com/ngrok/v2"
 
-   func forwardToApp() error {
+   func forwardToApp() (*ngrok.Forwarder, error) {
        fwd, err := ngrok.Forward(context.Background(),
            ngrok.WithUpstream("localhost:8080"),
        )
        if err != nil {
-           return err
+           return nil, err
        }
        log.Println("Ingress established at:", fwd.URL())
-       return nil
+       return fwd, nil
    }
    ```
 
