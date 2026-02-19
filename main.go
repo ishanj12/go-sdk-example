@@ -10,21 +10,19 @@ import (
 )
 
 func main() {
-	if err := run(context.Background()); err != nil {
+	fwd, err := ngrok.Forward(context.Background(),
+		ngrok.WithUpstream("localhost:8080"),
+	)
+	if err != nil {
 		log.Fatal(err)
 	}
-}
 
-func run(ctx context.Context) error {
-	ln, err := ngrok.Listen(ctx)
-	if err != nil {
-		return err
-	}
+	log.Println("Ingress established at:", fwd.URL())
 
-	log.Println("Ingress established at:", ln.URL())
-
-	return http.Serve(ln, http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("%s %s", r.Method, r.URL.Path)
 		fmt.Fprintln(w, "Hello from ngrok-go!")
-	}))
+	})
+
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
