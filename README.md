@@ -30,6 +30,7 @@ NGROK_AUTHTOKEN=<token> go run main.go
    import "golang.ngrok.com/ngrok/v2"
 
    func forwardToApp() error {
+       // Reads NGROK_AUTHTOKEN from environment automatically
        fwd, err := ngrok.Forward(context.Background(),
            ngrok.WithUpstream("http://localhost:8080"),
        )
