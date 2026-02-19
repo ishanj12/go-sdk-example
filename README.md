@@ -18,7 +18,13 @@ NGROK_AUTHTOKEN=<token> go run main.go
    go get golang.ngrok.com/ngrok/v2
    ```
 
-2. Add the following to your app:
+2. Set your authtoken:
+
+   ```sh
+   export NGROK_AUTHTOKEN=<token>
+   ```
+
+3. Add the following to your app:
 
    ```go
    import "golang.ngrok.com/ngrok/v2"
