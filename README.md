@@ -25,7 +25,7 @@ NGROK_AUTHTOKEN=<token> go run main.go
 
    func forwardToApp() error {
        fwd, err := ngrok.Forward(context.Background(),
-           ngrok.WithUpstream("localhost:8080"),
+           ngrok.WithUpstream("http://localhost:8080"),
        )
        if err != nil {
            return err
