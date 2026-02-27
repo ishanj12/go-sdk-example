@@ -35,7 +35,7 @@ NGROK_AUTHTOKEN=<token> go run main.go
    }
    ```
 
-3. Set your authtoken:
+3. Set your authtoken and restart your app:
 
    ```sh
    export NGROK_AUTHTOKEN=<token>
